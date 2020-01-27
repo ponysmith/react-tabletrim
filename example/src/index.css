@@ -2,4 +2,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 13px;
+}
+
+.tt-head .tt-tr .tt-th {
+  background-color: #efefef;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 10px;
+  text-align: left;
+}
+.tt-head .tt-tr .tt-sticky {
+  min-width: 100px;
+}
+
+.tt-body .tt-tr .tt-th,
+.tt-body .tt-tr .tt-td {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+  text-align: left;
 }
