@@ -109,7 +109,6 @@ TableTrim.propTypes = {
   isTrimmed: PropTypes.bool,
   stickyCol: PropTypes.number,
   activeCol: PropTypes.number,
-  autoTrimEnabled: PropTypes.bool,
   showActiveTitle: PropTypes.bool,
   showSelectControl: PropTypes.bool,
   showPrevControl: PropTypes.bool,
