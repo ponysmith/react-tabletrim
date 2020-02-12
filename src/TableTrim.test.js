@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import TableTrim from './index'
+import TableTrim from './TableTrim'
 import { TableTrimHeader } from './TableTrimHeader'
 import { TableTrimBody } from './TableTrimBody'
 import testData from './fixtures/data'
