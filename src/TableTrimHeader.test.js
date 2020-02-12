@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import TableTrimHeader from './TableTrimHeader'
-import testData from './data'
+import testData from './fixtures/data'
 
 describe('TableTrimHeader', () => {
   const minProps = {
@@ -104,7 +104,7 @@ describe('TableTrimHeader', () => {
     expect(wrapper.find('.tt-select').exists()).toEqual(false);
   });
 
-  it('should not render disabled contols when trimmed', () => {
+  it('should not render disabled controls when trimmed', () => {
     const props = { ...minProps, isTrimmed: true }
     const wrapper = shallow(<TableTrimHeader { ...props } />);
     expect(wrapper.find('.tt-prev').exists()).toEqual(false);

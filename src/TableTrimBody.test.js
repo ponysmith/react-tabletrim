@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import TableTrimBody from './TableTrimBody'
-import testData from './data'
+import testData from './fixtures/data'
 
 describe('TableTrimBody', () => {
   const minProps = {
