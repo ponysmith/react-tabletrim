@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import TableTrimHeader from './TableTrimHeader'
 import TableTrimBody from './TableTrimBody'
-import * as validators from './TableTrimValidators'
+import { validateActiveCol, validateStickyCol } from './TableTrimValidators'
 
 const TableTrim = (props) => {
   /**
@@ -100,8 +100,8 @@ TableTrim.propTypes = {
   data: PropTypes.object.isRequired,
   // optional
   isTrimmed: PropTypes.bool,
-  stickyCol: PropTypes.number,
-  activeCol: validators.validateActiveCol,
+  stickyCol: PropTypes.number && validateStickyCol,
+  activeCol: PropTypes.number && validateActiveCol,
   showActiveTitle: PropTypes.bool,
   showSelectControl: PropTypes.bool,
   showPrevControl: PropTypes.bool,
