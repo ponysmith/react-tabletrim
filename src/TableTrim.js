@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import TableTrimHeader from './TableTrimHeader'
@@ -23,6 +23,11 @@ const TableTrim = (props) => {
   useEffect(() => { setNextIndex(calculateNext(_activeCol)) }, [_activeCol])
 
   /**
+   * Refs
+   */
+  const tableRef = useRef(null)
+
+  /**
    * Helpers
    */
   const calculatePrev = (currentActive) => {
@@ -42,9 +47,29 @@ const TableTrim = (props) => {
   const handleActivateCol = (col) => {
     setActiveCol(col)
   }
+  const handleResize = () => {
+    if(props.autoTrimEnabled === true) {
+      if(tableRef.current.offsetWidth < props.autoTrimWidth && _isTrimmed === false) {
+        setIsTrimmed(true)
+      }
+      if(tableRef.current.offsetWidth >= props.autoTrimWidth && _isTrimmed == true) {
+        setIsTrimmed(false)
+      }
+    }
+  }
+
+  /**
+   * Event listener for window resize
+   */
+  let timeout = null
+  window.addEventListener('resize', () => { 
+    clearInterval(timeout); 
+    timeout = setTimeout(handleResize, 200) 
+  });
+
 
   return (
-    <table className="tt-table" cellPadding="0" cellSpacing="0">
+    <table ref={tableRef} className="tt-table" width="100%" cellPadding="0" cellSpacing="0">
       <TableTrimHeader 
         // from state
         isTrimmed={_isTrimmed}
@@ -83,6 +108,8 @@ TableTrim.defaultProps = {
   isTrimmed: false,
   stickyCol: 0,
   activeCol: 1,
+  autoTrimEnabled: true,
+  autoTrimWidth: 640,
   showSelectControl: true,
   showPrevControl: false,
   showNextControl: false,
@@ -100,6 +127,8 @@ TableTrim.propTypes = {
   data: PropTypes.object.isRequired,
   // optional
   isTrimmed: PropTypes.bool,
+  autoTrimEnabled: PropTypes.bool,
+  autoTrimWidth: PropTypes.number,
   stickyCol: PropTypes.number && validateStickyCol,
   activeCol: PropTypes.number && validateActiveCol,
   showActiveTitle: PropTypes.bool,
