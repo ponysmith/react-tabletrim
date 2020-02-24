@@ -74,7 +74,7 @@ In addition to the required `data` prop, **TableTrim** supports a handful of opt
 | `showActiveTitle` | `false` | Should the title of the active header be rendered? |
 | `showSelectControl` | `true` | Should the `select` control be rendered in the active column? |
 | `showPrevControl` | `false` | Should the **Prev** button control be rendered in the active column? |
-| `showPrevControl` | `false` | Should the **Next** button control be rendered in the active column? |
+| `showNextControl` | `false` | Should the **Next** button control be rendered in the active column? |
 | `prevControlHtml` | `false` | Set custom text for the **Prev** button. |
 | `nextControlHtml` | `false` | Set custom text for the **Next** button. |
 
