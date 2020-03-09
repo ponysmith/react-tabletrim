@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import TableTrimHeader from './TableTrimHeader'
@@ -7,7 +7,7 @@ import { validateActiveCol, validateStickyCol } from './TableTrimValidators'
 
 const TableTrim = (props) => {
   /**
-   * State hooks
+   * State
    */
   const [_isTrimmed, setIsTrimmed] = useState(props.isTrimmed);
   const [_activeCol, setActiveCol] = useState(props.activeCol);
@@ -15,12 +15,18 @@ const TableTrim = (props) => {
   const [_nextIndex, setNextIndex] = useState();
 
   /**
-   * Effect hooks
+   * Effects
    */
   useEffect(() => { setIsTrimmed(props.isTrimmed) }, [props.isTrimmed])
-  useEffect(() => { setActiveCol(props.activeCol) }, [props.activeCol])
-  useEffect(() => { setPrevIndex(calculatePrev(_activeCol)) }, [_activeCol])
-  useEffect(() => { setNextIndex(calculateNext(_activeCol)) }, [_activeCol])
+  useEffect(() => { 
+    setActiveCol(props.activeCol);
+    activeColCallback(props.activeCol);
+  }, [props.activeCol])
+  useEffect(() => { 
+    activeColCallback(_activeCol) 
+  }, [_activeCol])
+  useEffect(() => { setPrevIndex(calculatePrevHelper(_activeCol)) })
+  useEffect(() => { setNextIndex(calculateNextHelper(_activeCol)) })
 
   /**
    * Refs
@@ -30,43 +36,21 @@ const TableTrim = (props) => {
   /**
    * Helpers
    */
-  const calculatePrev = (currentActive) => {
+  const calculatePrevHelper = (currentActive) => {
     const max = props.data.header.cells.length - 1;
     const prev = (currentActive == 0) ? max : currentActive - 1;
-    return (prev != props.stickyCol) ? prev : calculatePrev(prev);
+    return (prev != props.stickyCol) ? prev : calculatePrevHelper(prev);
   }
-  const calculateNext = (currentActive) => {
+  const calculateNextHelper = (currentActive) => {
     const max = props.data.header.cells.length - 1;
     const next = (currentActive == max) ? 0 : currentActive + 1;
-    return (next != props.stickyCol) ? next : calculateNext(next);
+    return (next != props.stickyCol) ? next : calculateNextHelper(next);
   }
-
-  /**
-   * Events
-   */
-  const handleActivateCol = (col) => {
-    setActiveCol(col)
-  }
-  const handleResize = () => {
-    if(props.autoTrimEnabled === true) {
-      if(tableRef.current.offsetWidth < props.autoTrimWidth && _isTrimmed === false) {
-        setIsTrimmed(true)
-      }
-      if(tableRef.current.offsetWidth >= props.autoTrimWidth && _isTrimmed == true) {
-        setIsTrimmed(false)
-      }
+  const activeColCallback = (newActiveCol) => {
+    if(typeof props.activeColCallback === 'function') {
+      props.activeColCallback(newActiveCol);
     }
   }
-
-  /**
-   * Event listener for window resize
-   */
-  let timeout = null
-  window.addEventListener('resize', () => { 
-    clearInterval(timeout); 
-    timeout = setTimeout(handleResize, 200) 
-  });
-
 
   return (
     <table ref={tableRef} className="tt-table" width="100%" cellPadding="0" cellSpacing="0">
@@ -86,7 +70,7 @@ const TableTrim = (props) => {
         prevControlHtml={props.prevControlHtml}
         nextControlHtml={props.nextControlHtml}
         // methods
-        setActiveCol={handleActivateCol}
+        setActiveCol={setActiveCol}
         />
       <TableTrimBody
         // from state
@@ -115,7 +99,8 @@ TableTrim.defaultProps = {
   showNextControl: false,
   nextControlHtml: 'Next',
   prevControlHtml: 'Previous',
-  showActiveTitle: false
+  showActiveTitle: false,
+  activeColCallback: null
 }
 
 
@@ -136,7 +121,9 @@ TableTrim.propTypes = {
   showPrevControl: PropTypes.bool,
   showNextControl: PropTypes.bool,
   nextControlHtml: PropTypes.string,
-  prevControlHtml: PropTypes.string
+  prevControlHtml: PropTypes.string,
+  // callbacks
+  activeColCallback: PropTypes.func
 }
 
 export default TableTrim;
