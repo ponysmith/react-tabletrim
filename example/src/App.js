@@ -1,63 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import TableTrim from 'react-tabletrim'
+import Header from './Header'
+import Page from './Page'
 
 const App = () => {
-  const data = {
-    header: {
-      cells: [
-        { content: "Col 1" },
-        { content: "Col 2" },
-        { content: "Col 3" },
-        { content: "Col 4" }
-      ]
-    },
-    body: {
-      rows: [
-        { 
-          cells: [
-            { content: "Col 1" },
-            { content: "Col 2" },
-            { content: "Col 3" },
-            { content: "Col 4" }
-          ]
-        },
-        { 
-          cells: [
-            { content: "Col 1" },
-            { content: "Col 2" },
-            { content: "Col 3" },
-            { content: "Col 4" }
-          ]
-        },
-        { 
-          cells: [
-            { content: "Col 1" },
-            { content: "Col 2" },
-            { content: "Col 3" },
-            { content: "Col 4" }
-          ]
-        }
-      ]
-    }
+
+  const [_isNavExpanded, setNavExpanded] = useState(false);
+
+  const handleNavToggle = () => {
+    console.log('handleNavToggle');
+    setNavExpanded(!_isNavExpanded);
   }
-  
+
   return (
-    <div className="App">
-      <TableTrim
-        data={data} 
-        isTrimmed={true}
-        activeCol={1}
-        stickyCol={2}
-        // showActiveTitle={false}
-        // showPrevControl={false}
-        // showNextControl={false}
-        // showSelectControl={true}
-        // prevControlHtml={'p'}
-        // nextControlHtml={'n'}
-        />
-    </div>
-  );
+    <Router>
+      <Header onMenuButtonClick={handleNavToggle} />
+      <Page isNavExpanded={_isNavExpanded} />
+    </Router>
+  )
 }
 
 export default App;

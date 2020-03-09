@@ -1,23 +1,70 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
+  line-height: 1.4rem;
 }
 
-.tt-head .tt-tr .tt-th {
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 2rem 0 1rem;
+}
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 1.3rem;
+  color: #3795FF;
+  margin: 2rem 0 1rem;
+}
+
+thead th {
+  border-bottom: 2px solid #333;
+  color: #333;
   background-color: #efefef;
-  border-bottom: 2px solid #ccc;
-  padding: 5px 10px;
   text-align: left;
+  font-weight: normal;
+  padding: 7px 15px;
 }
-.tt-head .tt-tr .tt-sticky {
-  min-width: 100px;
+tbody th,
+tbody td {
+  text-align: left;
+  font-weight: normal;
+  padding: 7px 15px;
+}
+.tt-th.tt-sticky {
+  width: 200px;
 }
 
-.tt-body .tt-tr .tt-th,
-.tt-body .tt-tr .tt-td {
-  border-bottom: 1px solid #ccc;
+.options-panel {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #3795FF;
+  padding: 10px;
+}
+.option {
+  flex: 0 0 200px; 
+}
+.option-toggle {
+  background-color: transparent;
+  border: none;
   padding: 5px 10px;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.option-toggle .fas.fa-toggle-on {
+  font-size: 20px;
+  color: #3795FF;
+}
+.option-toggle .fas.fa-toggle-off {
+  font-size: 20px;
+  color: #999;
+}
+.option-toggle .option-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  margin-left: 10px;
 }

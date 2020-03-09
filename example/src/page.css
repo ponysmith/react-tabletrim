@@ -1,0 +1,28 @@
+#page-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+#page-nav {
+  height: 100%;
+}
+
+#page-content {
+  overflow: auto;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 900px;
+  transition: flex-basis .3s linear 0s;
+}
+#page-content main {
+  padding: 20px 20px 50px 20px;
+}
+#page-content.nav-expanded {
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 700px;
+  transition: flex .3s linear 0s;
+}

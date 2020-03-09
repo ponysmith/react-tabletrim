@@ -1,0 +1,44 @@
+#header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #111; 
+  display: flex;
+  align-items: center;
+}
+
+#header-container .menu-button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  height: 50px;
+  width: 40px;
+  line-height: 50px;
+  text-align: center;
+  color: #bbb;
+  cursor: pointer;
+  flex: 0 0 40px;
+}
+
+#header-container .header-title {
+  display: inline-block;
+  margin: 0 0 0 15px;
+  font-size: 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  color: #bbb;
+  flex: 1 1 auto;
+}
+
+#header-container .header-links {
+  flex: 0 0 100px;
+  text-align: right;
+  padding: 0 20px;
+}
+
+#header-container .header-link {
+  color: #bbb;
+  font-size: 18px;
+}
