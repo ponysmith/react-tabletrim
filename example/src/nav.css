@@ -18,6 +18,10 @@
   align-items: center;
   text-decoration: none;
 }
+#nav-container .nav-link:hover,
+#nav-container .nav-link:active {
+  background-color: #ddd;
+}
 
 /* Icon */
 #nav-container .link-icon {
@@ -26,13 +30,15 @@
   font-size: 14px;
   line-height: 40px;
   color: #444;
-  background-color: #eee;
   text-align: center;
   flex: 0 0 40px;
 }
 
 /* Title */
 #nav-container .link-title {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
   color: #444;
   opacity: 0;
   transition: opacity .3s linear 0s;
