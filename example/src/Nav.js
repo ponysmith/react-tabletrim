@@ -13,17 +13,17 @@ export const Nav = ({ isNavExpanded }) => {
 
       <div className="nav-divider"></div>
       
-      <Link className="nav-link" to="/default">
+      <Link className="nav-link" to="/basic">
         <span className="link-icon fas fa-table"></span>
-        <span className="link-title">Default Settings</span>
+        <span className="link-title">Basic Example</span>
       </Link>
-      <Link className="nav-link" to="/columns">
+      <Link className="nav-link" to="/active-col">
         <span className="link-icon fas fa-columns"></span>
-        <span className="link-title">Custom Columns</span>
+        <span className="link-title">Set Active Column</span>
       </Link>
-      <Link className="nav-link" to="/controls">
+      <Link className="nav-link" to="/active-col-callback">
         <span className="link-icon fas fa-sliders-h"></span>
-        <span className="link-title">Custom Controls</span>
+        <span className="link-title">Active Column Callback</span>
       </Link>
     </nav>
   )

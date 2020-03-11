@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import data from '../data'
 import TableTrim from 'react-tabletrim'
 
-export const Default = () => {
+export const Basic = () => {
   /**
    * State
    */
@@ -12,11 +12,6 @@ export const Default = () => {
   const [_showActiveTitle, setShowActiveTitle] = useState(false)
   const [_showPrevControl, setShowPrevControl] = useState(false)
   const [_showNextControl, setShowNextControl] = useState(false)
-
-  /**
-   * Effects
-   */
-  useEffect(() => { setIsTrimmed(_isTrimmed) })
 
   /**
    * Methods
@@ -35,7 +30,7 @@ export const Default = () => {
         The table below is a basic implementation of <code>react-tabletrim</code>. To get a better idea of how you can customize <strong>TableTrim</strong>, feel free to play around with the params listed below.
       </p>
 
-      <h2>TableTrim params</h2>
+      <h2>Example</h2>
       <div className="options-panel">
         <div className="option">
           <button className="option-toggle" onClick={handleIsTrimmed}>
@@ -69,7 +64,6 @@ export const Default = () => {
         </div>
       </div>
 
-      <h2>Result</h2>
       <TableTrim 
         data={data} 
         isTrimmed={_isTrimmed}
@@ -82,4 +76,4 @@ export const Default = () => {
   );
 }
 
-export default Default;
+export default Basic;

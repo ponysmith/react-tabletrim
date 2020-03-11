@@ -4,9 +4,9 @@ import { Switch, Route } from 'react-router-dom'
 import './page.css'
 import Nav from './Nav'
 import Main from './pages/Main'
-import Default from './pages/Default'
-import Columns from './pages/Columns'
-import Controls from './pages/Controls'
+import Basic from './pages/Basic'
+import ActiveCol from './pages/ActiveCol'
+import ActiveColCallback from './pages/ActiveColCallback'
 
 export const Page = ({ isNavExpanded }) => {
   return (
@@ -18,9 +18,9 @@ export const Page = ({ isNavExpanded }) => {
         <main>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/default" component={Default} />
-          <Route exact path="/columns" component={Columns} />
-          <Route exact path="/controls" component={Controls} />
+          <Route exact path="/basic" component={Basic} />
+          <Route exact path="/active-col" component={ActiveCol} />
+          <Route exact path="/active-col-callback" component={ActiveColCallback} />
         </Switch>
         </main>
       </div>

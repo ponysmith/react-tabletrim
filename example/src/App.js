@@ -9,7 +9,6 @@ const App = () => {
   const [_isNavExpanded, setNavExpanded] = useState(false);
 
   const handleNavToggle = () => {
-    console.log('handleNavToggle');
     setNavExpanded(!_isNavExpanded);
   }
 
