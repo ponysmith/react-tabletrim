@@ -47,5 +47,5 @@ jobs:
       run: |
         pwd
         ls -lsa
-        aws s3 sync build s3://tabletrim.ponysmith.com --region us-west-1
+        aws s3 sync example/build s3://tabletrim.ponysmith.com --region us-west-1
       
