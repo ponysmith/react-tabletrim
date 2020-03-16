@@ -1,0 +1,46 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [13.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build react-tabletrim
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+      run: npm install
+      run: npm run build --if-present
+      
+    - name: Build docs site
+      uses: actions/setup-node@v1
+      run: cd example
+      run: npm install
+      run: npm run build --if-present
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-1
+    
+    - name: Deploy docs site to S3
+      run: |
+        aws s3 sync ./example s3://tabletrim.ponysmith.com    
+      
