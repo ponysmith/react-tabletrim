@@ -8,18 +8,31 @@ body {
 
 h1 {
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 100;
   font-size: 1.6rem;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ddd;
   margin: 2rem 0 1rem;
 }
 h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 1.3rem;
-  color: #3795FF;
+  color: #666;
   margin: 2rem 0 1rem;
 }
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #444;
+  margin: 2rem 0 .5rem;
+}
 
+table {
+  border-spacing: 0;
+  width: 100%;
+}
 thead th {
   border-bottom: 2px solid #333;
   color: #333;
@@ -69,4 +82,10 @@ tbody td {
 }
 .option-title {
   margin: 0 10px;
+}
+
+pre {
+  background-color: rgb(235, 245, 255);
+  color: rgb(31, 84, 145);
+  padding: 10px;
 }
