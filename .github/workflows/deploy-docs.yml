@@ -19,16 +19,19 @@ jobs:
         node-version: [13.8]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build react-tabletrim
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install Node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    
+    - name: Build react-tabletrim
       run: npm install
       run: npm run build --if-present
       
     - name: Build docs site
-      uses: actions/setup-node@v1
       run: cd example
       run: npm install
       run: npm run build --if-present
