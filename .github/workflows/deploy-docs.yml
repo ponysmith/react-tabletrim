@@ -45,5 +45,7 @@ jobs:
     
     - name: Deploy docs site to S3
       run: |
-        aws s3 sync build s3://tabletrim.ponysmith.com --region us-west-1
+        pwd
+        ls -lsa
+        aws s3 sync example/build s3://tabletrim.ponysmith.com --region us-west-1
       
