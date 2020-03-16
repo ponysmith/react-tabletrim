@@ -13,7 +13,7 @@
   display: inline-block;
   border: none;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 14px;
   height: 50px;
   width: 40px;
   line-height: 50px;
@@ -30,6 +30,8 @@
   font-family: "Roboto Mono", monospace;
   color: #bbb;
   flex: 1 1 auto;
+  padding: 0;
+  border: 0;
 }
 
 #header-container .header-links {
