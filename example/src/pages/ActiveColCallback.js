@@ -15,6 +15,7 @@ export const ActiveColCallback = () => {
    */
   const handleIsTrimmed = () => setIsTrimmed(!_isTrimmed)
   const handleActiveColCallback = (col) => { setActiveCol(col) }
+  const handleIsTrimmedCallback = (newIsTrimmed) => { setIsTrimmed(newIsTrimmed) }
 
   return (
     <section>      
@@ -47,6 +48,7 @@ export const ActiveColCallback = () => {
         data={data} 
         isTrimmed={_isTrimmed}
         activeColCallback={handleActiveColCallback}
+        isTrimmedCallback={handleIsTrimmedCallback}
         />
     </section>
   );

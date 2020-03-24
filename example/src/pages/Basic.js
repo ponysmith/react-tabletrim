@@ -21,7 +21,7 @@ export const Basic = () => {
   const handleShowActiveTitle = () => setShowActiveTitle(!_showActiveTitle)
   const handleShowPrevControl = () => setShowPrevControl(!_showPrevControl)
   const handleShowNextControl = () => setShowNextControl(!_showNextControl)
-
+  const handleIsTrimmedCallback = (newIsTrimmed) => { setIsTrimmed(newIsTrimmed) }
 
   return (
     <section>      
@@ -71,6 +71,7 @@ export const Basic = () => {
         showActiveTitle={_showActiveTitle}
         showPrevControl={_showPrevControl}
         showNextControl={_showNextControl}
+        isTrimmedCallback={handleIsTrimmedCallback}
         />
     </section>
   );

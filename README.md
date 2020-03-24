@@ -71,6 +71,8 @@ In addition to the required `data` prop, **TableTrim** supports a handful of opt
 | `isTrimmed` | `false` | Sets whether the table is currently trimmed |
 | `stickyCol` | `0` | Set the column index which should always be visible when the table is trimmed. |
 | `activeCol` | `1` | Sets the default active column, or changes the currently active column. |
+| `autoTrimEnabled` | `true` | If `true` the width of the table will be checked (including on resize). If the table width is less than or equal to `autoTrimWidth`, the table will be trimmed. If the width is greater, the table will be untrimmed |
+| `autoTrimWidth` | `640` | Width for auto-trimming. References the width of the table, not the window |
 | `showActiveTitle` | `false` | Should the title of the active header be rendered? |
 | `showSelectControl` | `true` | Should the `select` control be rendered in the active column? |
 | `showPrevControl` | `false` | Should the **Prev** button control be rendered in the active column? |
@@ -78,6 +80,7 @@ In addition to the required `data` prop, **TableTrim** supports a handful of opt
 | `prevControlHtml` | `false` | Set custom text for the **Prev** button. |
 | `nextControlHtml` | `false` | Set custom text for the **Next** button. |
 | `activeColCallback` | `null` | Callback function to fire any time the internal `activeCol` state is updated. Takes a single argument (`activeCol` index) |
+| `isTrimmedCallback` | `null` | Callback function to fire any time the internal `isTrimmed` state is updated. Takes a single argument (new `isTrimmed` value) |
 
 ## Styling
 **TableTrim** does not include any styling. It does, however, set multiple classes on the various elements that you can tie your own custom CSS to if you wish.

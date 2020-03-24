@@ -17,6 +17,7 @@ export const ActiveCol = () => {
    */
   const handleIsTrimmed = () => setIsTrimmed(!_isTrimmed)
   const handleActiveCol = (e) => { setActiveCol(e.target.value) }
+  const handleIsTrimmedCallback = (newIsTrimmed) => { setIsTrimmed(newIsTrimmed) }
 
   const renderActiveColOptions = () => {
     return data.header.cells.map((cell, index) => {
@@ -71,6 +72,7 @@ export const ActiveCol = () => {
         activeCol={_activeCol}
         showActiveTitle={true}
         showSelectControl={false}
+        isTrimmedCallback={handleIsTrimmedCallback}
         />
     </section>
   );

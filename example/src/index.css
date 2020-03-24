@@ -46,6 +46,7 @@ tbody td {
   text-align: left;
   font-weight: normal;
   padding: 7px 15px;
+  vertical-align: top;
 }
 .tt-th.tt-sticky {
   width: 200px;

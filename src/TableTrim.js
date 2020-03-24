@@ -7,6 +7,11 @@ import { validateActiveCol, validateStickyCol } from './TableTrimValidators'
 
 const TableTrim = (props) => {
   /**
+   * Refs
+   */
+  const tableRef = useRef(null)
+
+  /**
    * State
    */
   const [_isTrimmed, setIsTrimmed] = useState(props.isTrimmed);
@@ -18,20 +23,33 @@ const TableTrim = (props) => {
    * Effects
    */
   useEffect(() => { setIsTrimmed(props.isTrimmed) }, [props.isTrimmed])
-  useEffect(() => { 
-    setActiveCol(props.activeCol);
-    activeColCallback(props.activeCol);
-  }, [props.activeCol])
-  useEffect(() => { 
-    activeColCallback(_activeCol) 
-  }, [_activeCol])
+  useEffect(() => { isTrimmedCallback(_isTrimmed) }, [_isTrimmed])
+  useEffect(() => { setActiveCol(props.activeCol) }, [props.activeCol])
+  useEffect(() => { activeColCallback(_activeCol) }, [_activeCol])
   useEffect(() => { setPrevIndex(calculatePrevHelper(_activeCol)) })
   useEffect(() => { setNextIndex(calculateNextHelper(_activeCol)) })
+  useEffect(() => { handleResize() }, [])
+
 
   /**
-   * Refs
+   * Window resize listener
    */
-  const tableRef = useRef(null)
+  let timeout = null
+  window.addEventListener('resize', () => { 
+    clearInterval(timeout); 
+    timeout = setTimeout(handleResize, 200) 
+  });
+  const handleResize = () => {
+    if(props.autoTrimEnabled === true & tableRef.current !== null) {
+      if(tableRef.current.offsetWidth < props.autoTrimWidth && _isTrimmed === false) {
+        setIsTrimmed(true)
+      }
+      if(tableRef.current.offsetWidth >= props.autoTrimWidth && _isTrimmed === true) {
+        setIsTrimmed(false)
+      }
+    }
+  }
+
 
   /**
    * Helpers
@@ -49,6 +67,11 @@ const TableTrim = (props) => {
   const activeColCallback = (newActiveCol) => {
     if(typeof props.activeColCallback === 'function') {
       props.activeColCallback(newActiveCol);
+    }
+  }
+  const isTrimmedCallback = (newIsTrimmed) => {
+    if(typeof props.isTrimmedCallback === 'function') {
+      props.isTrimmedCallback(newIsTrimmed);
     }
   }
 
@@ -100,7 +123,8 @@ TableTrim.defaultProps = {
   nextControlHtml: 'Next',
   prevControlHtml: 'Previous',
   showActiveTitle: false,
-  activeColCallback: null
+  activeColCallback: null,
+  isTrimmedCallback: null
 }
 
 
@@ -123,7 +147,8 @@ TableTrim.propTypes = {
   nextControlHtml: PropTypes.string,
   prevControlHtml: PropTypes.string,
   // callbacks
-  activeColCallback: PropTypes.func
+  activeColCallback: PropTypes.func,
+  isTrimmedCallback: PropTypes.func
 }
 
 export default TableTrim;
