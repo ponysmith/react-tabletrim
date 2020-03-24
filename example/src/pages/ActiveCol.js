@@ -22,8 +22,8 @@ export const ActiveCol = () => {
   const renderActiveColOptions = () => {
     return data.header.cells.map((cell, index) => {
       return (index === _stickyCol)
-        ? <option key={`activeColSelect-${index}`} value={index} disabled>{cell.content}</option>
-        : <option key={`activeColSelect-${index}`} value={index}>{cell.content}</option>
+        ? <option key={`activeColSelect-${index}`} value={index} disabled>{index}</option>
+        : <option key={`activeColSelect-${index}`} value={index}>{index}</option>
     });
   }
 
@@ -50,30 +50,34 @@ export const ActiveCol = () => {
       </ul>
 
       <h2>Example</h2>
-      <div className="options-panel">
-        <div className="option">
-          <button className="option-toggle" onClick={handleIsTrimmed}>
-            <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">isTrimmed</span>
-          </button>
+      <div id="example-container">
+        <div id="example-options">
+          <div className="option">
+            <button className="option-toggle" onClick={handleIsTrimmed}>
+              <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">isTrimmed</span>
+            </button>
+          </div>
+          <div className="option">
+            <select className="option-select" id="activeColSelect" selected={_activeCol} onChange={handleActiveCol}>
+              {renderActiveColOptions()}
+            </select>
+            <label htmlFor="activeColSelect" className="option-title">activeCol</label>
+          </div>
         </div>
-        <div className="option">
-          <select id="activeColSelect" selected={_activeCol} onChange={handleActiveCol}>
-            {renderActiveColOptions()}
-          </select>
-          <label htmlFor="activeColSelect" className="option-title">activeCol</label>
+
+        <div id="example-table">
+          <TableTrim 
+            data={data}
+            stickyCol={_stickyCol} 
+            isTrimmed={_isTrimmed}
+            activeCol={_activeCol}
+            showActiveTitle={true}
+            showSelectControl={false}
+            isTrimmedCallback={handleIsTrimmedCallback}
+            />
         </div>
       </div>
-
-      <TableTrim 
-        data={data}
-        stickyCol={_stickyCol} 
-        isTrimmed={_isTrimmed}
-        activeCol={_activeCol}
-        showActiveTitle={true}
-        showSelectControl={false}
-        isTrimmedCallback={handleIsTrimmedCallback}
-        />
     </section>
   );
 }
