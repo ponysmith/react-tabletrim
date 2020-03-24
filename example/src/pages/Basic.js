@@ -21,7 +21,7 @@ export const Basic = () => {
   const handleShowActiveTitle = () => setShowActiveTitle(!_showActiveTitle)
   const handleShowPrevControl = () => setShowPrevControl(!_showPrevControl)
   const handleShowNextControl = () => setShowNextControl(!_showNextControl)
-
+  const handleIsTrimmedCallback = (newIsTrimmed) => { setIsTrimmed(newIsTrimmed) }
 
   return (
     <section>      
@@ -31,47 +31,52 @@ export const Basic = () => {
       </p>
 
       <h2>Example</h2>
-      <div className="options-panel">
-        <div className="option">
-          <button className="option-toggle" onClick={handleIsTrimmed}>
-            <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">isTrimmed</span>
-          </button>
+      <div id="example-container">
+        <div id="example-options">
+          <div className="option">
+            <button className="option-toggle" onClick={handleIsTrimmed}>
+              <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">isTrimmed</span>
+            </button>
+          </div>
+          <div className="option">
+            <button className="option-toggle" onClick={handleShowSelectControl}>
+              <span className={ (_showSelectControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">showSelectControl</span>
+            </button>
+          </div>
+          <div className="option">
+            <button className="option-toggle" onClick={handleShowActiveTitle}>
+              <span className={ (_showActiveTitle) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">showActiveTitle</span>
+            </button>
+          </div>
+          <div className="option">
+            <button className="option-toggle" onClick={handleShowPrevControl}>
+              <span className={ (_showPrevControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">showPrevControl</span>
+            </button>
+          </div>
+          <div className="option">
+            <button className="option-toggle" onClick={handleShowNextControl}>
+              <span className={ (_showNextControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">showNextControl</span>
+            </button>
+          </div>
         </div>
-        <div className="option">
-          <button className="option-toggle" onClick={handleShowSelectControl}>
-            <span className={ (_showSelectControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">showSelectControl</span>
-          </button>
-        </div>
-        <div className="option">
-          <button className="option-toggle" onClick={handleShowActiveTitle}>
-            <span className={ (_showActiveTitle) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">showActiveTitle</span>
-          </button>
-        </div>
-        <div className="option">
-          <button className="option-toggle" onClick={handleShowPrevControl}>
-            <span className={ (_showPrevControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">showPrevControl</span>
-          </button>
-        </div>
-        <div className="option">
-          <button className="option-toggle" onClick={handleShowNextControl}>
-            <span className={ (_showNextControl) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">showNextControl</span>
-          </button>
+
+        <div id="example-table">
+          <TableTrim 
+            data={data} 
+            isTrimmed={_isTrimmed}
+            showSelectControl={_showSelectControl}
+            showActiveTitle={_showActiveTitle}
+            showPrevControl={_showPrevControl}
+            showNextControl={_showNextControl}
+            isTrimmedCallback={handleIsTrimmedCallback}
+            />
         </div>
       </div>
-
-      <TableTrim 
-        data={data} 
-        isTrimmed={_isTrimmed}
-        showSelectControl={_showSelectControl}
-        showActiveTitle={_showActiveTitle}
-        showPrevControl={_showPrevControl}
-        showNextControl={_showNextControl}
-        />
     </section>
   );
 }

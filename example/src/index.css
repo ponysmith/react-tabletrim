@@ -40,52 +40,104 @@ thead th {
   text-align: left;
   font-weight: normal;
   padding: 7px 15px;
+  vertical-align: top;
 }
 tbody th,
 tbody td {
   text-align: left;
   font-weight: normal;
   padding: 7px 15px;
+  vertical-align: top;
 }
 .tt-th.tt-sticky {
   width: 200px;
 }
 
+
+#example-container {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+#example-options {
+  flex: 0 0 200px;
+  padding: 5px;
+  background-color: rgb(232, 243, 255);
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+#example-table {
+  flex: 1 1 auto;
+  border-right: 1px solid #333;
+  border-left: 1px solid #333;
+}
+
+
 .options-panel {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;  
   border: 1px solid #3795FF;
   padding: 10px;
 }
 .option {
   flex: 0 0 200px;
+  padding: 5px 10px;
   display: flex;
   align-items: center; 
   font-family: "Roboto Mono", monospace;
 }
 .option-toggle {
+  padding: 0;
   font-family: inherit;
+  font-size: 1rem;
   background-color: transparent;
   border: none;
-  padding: 5px 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-align: right;
 }
 .option-toggle .fas.fa-toggle-on {
   font-size: 20px;
   color: #3795FF;
+  display: inline-block;
+  width: 50px;
 }
 .option-toggle .fas.fa-toggle-off {
   font-size: 20px;
-  color: #999;
+  color: #666;
+  width: 50px;
+}
+.option-select {
+  display: inline-block;
+  width: 50px;
+}
+.option-raw {
+  display: inline-block;
+  width: 50px;
+  color: #666;
+  text-align: right;
+  font-weight: 800;
 }
 .option-title {
   margin: 0 10px;
+  font-size: 12px;
 }
 
 pre {
-  background-color: rgb(235, 245, 255);
+  background-color: rgb(247, 251, 255);
   color: rgb(31, 84, 145);
   padding: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  #example-container {
+    display: flex;
+  }
+  #example-table {
+    border-left: none;
+  }
+  #example-options {
+    border-bottom: none;
+  }
 }

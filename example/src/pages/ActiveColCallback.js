@@ -15,6 +15,7 @@ export const ActiveColCallback = () => {
    */
   const handleIsTrimmed = () => setIsTrimmed(!_isTrimmed)
   const handleActiveColCallback = (col) => { setActiveCol(col) }
+  const handleIsTrimmedCallback = (newIsTrimmed) => { setIsTrimmed(newIsTrimmed) }
 
   return (
     <section>      
@@ -27,27 +28,31 @@ export const ActiveColCallback = () => {
       <p>
         Trim the table below and then update the active column using the built-in controls. The value of <code>activeCol</code> below will update via the <code>activeColCallback</code>.
       </p>
-      <div className="options-panel">
-        <div className="option">
-          <span className="option-title">activeCol</span>
-          <span>{_activeCol}</span>
-        </div>
-      </div>
 
       <h2>Example</h2>
-      <div className="options-panel">
-        <div className="option">
-          <button className="option-toggle" onClick={handleIsTrimmed}>
-            <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
-            <span className="option-title">isTrimmed</span>
-          </button>
+      <div id="example-container">
+        <div id="example-options">
+          <div className="option">
+            <button className="option-toggle" onClick={handleIsTrimmed}>
+              <span className={ (_isTrimmed) ? "fas fa-toggle-on" : "fas fa-toggle-off" }></span>
+              <span className="option-title">isTrimmed</span>
+            </button>
+          </div>
+          <div className="option">
+            <span className="option-raw">{_activeCol}</span>
+            <span className="option-title">activeCol</span>
+          </div>
+        </div>
+
+        <div id="example-table">
+          <TableTrim 
+            data={data} 
+            isTrimmed={_isTrimmed}
+            activeColCallback={handleActiveColCallback}
+            isTrimmedCallback={handleIsTrimmedCallback}
+            />
         </div>
       </div>
-      <TableTrim 
-        data={data} 
-        isTrimmed={_isTrimmed}
-        activeColCallback={handleActiveColCallback}
-        />
     </section>
   );
 }
