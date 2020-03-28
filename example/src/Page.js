@@ -7,6 +7,7 @@ import Main from './pages/Main'
 import Basic from './pages/Basic'
 import ActiveCol from './pages/ActiveCol'
 import ActiveColCallback from './pages/ActiveColCallback'
+import CustomPrevNext from './pages/CustomPrevNext'
 
 export const Page = ({ isNavExpanded }) => {
   return (
@@ -21,6 +22,7 @@ export const Page = ({ isNavExpanded }) => {
           <Route exact path="/basic" component={Basic} />
           <Route exact path="/active-col" component={ActiveCol} />
           <Route exact path="/active-col-callback" component={ActiveColCallback} />
+          <Route exact path="/custom-prevnext" component={CustomPrevNext} />
         </Switch>
         </main>
       </div>

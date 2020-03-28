@@ -72,6 +72,15 @@ tbody td {
   border-left: 1px solid #333;
 }
 
+#example-table .custom-prev,
+#example-table .custom-next {
+  font-size: 18px;
+  color: #3795FF;
+  margin: 0 5px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
 
 .options-panel {
   display: flex;
@@ -95,7 +104,7 @@ tbody td {
   display: flex;
   align-items: center;
   cursor: pointer;
-  text-align: right;
+  text-align: center;
 }
 .option-toggle .fas.fa-toggle-on {
   font-size: 20px;
@@ -116,7 +125,7 @@ tbody td {
   display: inline-block;
   width: 50px;
   color: #666;
-  text-align: right;
+  text-align: center;
   font-weight: 800;
 }
 .option-title {

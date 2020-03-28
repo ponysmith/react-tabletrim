@@ -22,8 +22,12 @@ export const Nav = ({ isNavExpanded }) => {
         <span className="link-title">Set Active Column</span>
       </Link>
       <Link className="nav-link" to="/active-col-callback">
-        <span className="link-icon fas fa-sliders-h"></span>
+        <span className="link-icon fas fa-undo-alt"></span>
         <span className="link-title">Active Column Callback</span>
+      </Link>
+      <Link className="nav-link" to="/custom-prevnext">
+        <span className="link-icon fas fa-exchange-alt"></span>
+        <span className="link-title">Custom Prev / Next</span>
       </Link>
     </nav>
   )

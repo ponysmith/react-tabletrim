@@ -1,7 +1,16 @@
 import React from 'react'
 import classNames from 'classnames'
 
+const defaultPrevControl = () => (<button>Previous</button>)
+const defaultNextControl = () => (<button>Next</button>)
+
 export const TableTrimHeader = (props) => {
+
+  /**
+   * Overrides
+   */
+  const PrevControl = props.customPrevControl || defaultPrevControl
+  const NextControl = props.customNextControl || defaultNextControl
 
   /**
    * Render methods
@@ -50,11 +59,19 @@ export const TableTrimHeader = (props) => {
   }
 
   const renderPrevControl = () => {
-    return (<button className="tt-prev" onClick={ () => props.setActiveCol(props.prevIndex) }>{ props.prevControlHtml }</button>)
+    return (
+      <span className="tt-prev" onClick={ () => props.setActiveCol(props.prevIndex) }>
+        <PrevControl />
+      </span>
+    )
   }
 
   const renderNextControl = () => {
-    return (<button className="tt-next" onClick={ () => props.setActiveCol(props.nextIndex) }>{ props.nextControlHtml }</button>)
+    return (
+      <span className="tt-next" onClick={ () => props.setActiveCol(props.nextIndex) }>
+        <NextControl />
+      </span>
+    )
   }
 
   const renderSelectControl = (cells) => {

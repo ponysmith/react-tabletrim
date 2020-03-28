@@ -1,7 +1,10 @@
+import React from 'react'
+
+
 export const errors = {
   ACTIVECOL_OUT_OF_RANGE: 'activeCol - Out of range',
   STICKYCOL_OUT_OF_RANGE: 'stickyCol - Out of range',
-  ACTIVECOL_STICKYCOL_CONFLICT: 'activeCol and stickyCol cannot be the same'
+  ACTIVECOL_STICKYCOL_CONFLICT: 'activeCol and stickyCol cannot be the same',
 }
 
 export const validateActiveCol = (props, propName) => {
