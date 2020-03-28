@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import TableTrimHeader from './TableTrimHeader'
 import TableTrimBody from './TableTrimBody'
-import { validateActiveCol, validateStickyCol } from './TableTrimValidators'
+import { validateActiveCol, validateStickyCol, validateReactComponent } from './TableTrimValidators'
 
 const TableTrim = (props) => {
   /**
@@ -90,8 +90,8 @@ const TableTrim = (props) => {
         showPrevControl={props.showPrevControl}
         showNextControl={props.showNextControl}
         showSelectControl={props.showSelectControl}
-        prevControlHtml={props.prevControlHtml}
-        nextControlHtml={props.nextControlHtml}
+        customPrevControl={props.customPrevControl}
+        customNextControl={props.customNextControl}
         // methods
         setActiveCol={setActiveCol}
         />
@@ -120,8 +120,6 @@ TableTrim.defaultProps = {
   showSelectControl: true,
   showPrevControl: false,
   showNextControl: false,
-  nextControlHtml: 'Next',
-  prevControlHtml: 'Previous',
   showActiveTitle: false,
   activeColCallback: null,
   isTrimmedCallback: null
@@ -144,8 +142,8 @@ TableTrim.propTypes = {
   showSelectControl: PropTypes.bool,
   showPrevControl: PropTypes.bool,
   showNextControl: PropTypes.bool,
-  nextControlHtml: PropTypes.string,
-  prevControlHtml: PropTypes.string,
+  customPrevControl: PropTypes.func,
+  customNextControl: PropTypes.func,
   // callbacks
   activeColCallback: PropTypes.func,
   isTrimmedCallback: PropTypes.func

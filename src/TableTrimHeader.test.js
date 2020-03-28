@@ -112,7 +112,7 @@ describe('TableTrimHeader', () => {
     expect(wrapper.find('.tt-select').exists()).toEqual(false);
   })
 
-  it('should render controls if enabled when trimmed', () => {
+  it('should render enabled controls when trimmed', () => {
     const props = { ...minProps, isTrimmed: true, showPrevControl: true, showNextControl: true, showSelectControl: true }
     const wrapper = shallow(<TableTrimHeader { ...props } />);
     expect(wrapper.find('.tt-prev').exists()).toEqual(true);
@@ -120,11 +120,15 @@ describe('TableTrimHeader', () => {
     expect(wrapper.find('.tt-select').exists()).toEqual(true);
   });
 
-  it('should use custom HTML for prev and next controls', () => {
-    const props = { ...minProps, isTrimmed: true, showPrevControl: true, showNextControl: true, prevControlHtml: 'foo', nextControlHtml: 'bar' }
+  it('should use custom components for prev and next controls', () => {
+    const customPrev = () => (<span>customPrev</span>);
+    const customNext = () => (<span>customNext</span>);
+    const props = { ...minProps, isTrimmed: true, showPrevControl: true, showNextControl: true, customPrevControl: customPrev, customNextControl: customNext }
     const wrapper = shallow(<TableTrimHeader { ...props } />);
-    expect(wrapper.find('.tt-prev').text()).toEqual('foo');
-    expect(wrapper.find('.tt-next').text()).toEqual('bar');
+    expect(wrapper.find(customPrev).exists()).toEqual(true);
+    expect(wrapper.find(customNext).exists()).toEqual(true);
+    expect(wrapper.find(customPrev).html()).toEqual('<span>customPrev</span>');
+    expect(wrapper.find(customNext).html()).toEqual('<span>customNext</span>');
   });
 
   it('should select the currently active column in the select control', () => {
