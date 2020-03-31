@@ -1,12 +1,12 @@
 {
   "name": "react-tabletrim",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "author": "ponysmith",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url":  "https://github.com/ponysmith/react-tabletrim"
+    "url": "https://github.com/ponysmith/react-tabletrim"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
